@@ -87,7 +87,10 @@ When does it occur?
 stepsbyinterval$time[stepsbyinterval$steps.mean == max(stepsbyinterval$steps.mean)]
 ```
 ## Imputing missing values
-A number of the values in the original data contain N/A.  I have chosen to fill those values with the average number of steps for that interval taken over all days.  The results are stored in a new column:
+```{r}
+nna<-length(activityData$steps[is.na(activityData$steps)])
+```
+A number of the values in the original data contain N/A, `r nna` to be exact.  I have chosen to fill those values with the average number of steps for that interval taken over all days.  The results are stored in a new column:
 ```{r}
 for (i in 1:length(activityData$steps))
   { 

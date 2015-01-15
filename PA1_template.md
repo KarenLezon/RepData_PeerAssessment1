@@ -117,7 +117,11 @@ stepsbyinterval$time[stepsbyinterval$steps.mean == max(stepsbyinterval$steps.mea
 ## [1] "0835"
 ```
 ## Imputing missing values
-A number of the values in the original data contain N/A.  I have chosen to fill those values with the average number of steps for that interval taken over all days.  The results are stored in a new column:
+
+```r
+nna<-length(activityData$steps[is.na(activityData$steps)])
+```
+A number of the values in the original data contain N/A, 2304 to be exact.  I have chosen to fill those values with the average number of steps for that interval taken over all days.  The results are stored in a new column:
 
 ```r
 for (i in 1:length(activityData$steps))
@@ -141,7 +145,7 @@ hist(stepsNewSummary$stepsnew.sum, breaks=10,main="Total Steps per Day",
      xlab="Sum of Steps",col="pink")
 ```
 
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15-1.png) 
+![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16-1.png) 
 
 It has a similar shape to the original with a the center a bit exagerated. 
 
@@ -194,6 +198,6 @@ xyplot(x~xinterval|xdaytype, data=stepsbyintday, type="l", layout=c(1,2),
        ylab="average number of steps")
 ```
 
-![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-20-1.png) 
+![plot of chunk unnamed-chunk-21](figure/unnamed-chunk-21-1.png) 
 
 The plot does show a difference in the patterns.  The steps start to climb a little later in the day on the weekends and tend to stay higher during the bulk of the day.  
